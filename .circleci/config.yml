@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/openjdk:17.0.5
+    steps:
+      - checkout
+      - run:
+          name: Build and test
+          command: mvn -B clean install
+
+workflows:
+  basic-build-and-test: 
+    jobs:
+      - build-and-test
